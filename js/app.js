@@ -484,14 +484,14 @@
         <div class="restaurant-img-wrapper">
           <img src="${escapeHTML(item.Image.trim())}" alt="${escapeHTML(item.List || 'Restaurant spot')}" class="restaurant-img" loading="lazy" onerror="this.onerror=null; if(this.closest('.restaurant-card')) { this.closest('.restaurant-card').classList.remove('has-image'); this.closest('.restaurant-card').classList.add('no-image'); } if(this.parentNode) this.parentNode.remove();">
           ${hasPrice ? `<span class="price-badge">${escapeHTML(item.Price)}</span>` : ''}
-          ${hasType ? `<span class="type-badge">${escapeHTML(item.Type)}</span>` : ''}
+          ${hasType ? `<span class="type-badge" data-type="${escapeHTML(item.Type)}">${escapeHTML(item.Type)}</span>` : ''}
         </div>
       ` : '';
 
       const inlineBadgesHTML = (!hasImage && (hasPrice || hasType)) ? `
         <div class="restaurant-badges-inline">
           ${hasPrice ? `<span class="price-badge-inline">${escapeHTML(item.Price)}</span>` : ''}
-          ${hasType ? `<span class="type-badge-inline">${escapeHTML(item.Type)}</span>` : ''}
+          ${hasType ? `<span class="type-badge-inline" data-type="${escapeHTML(item.Type)}">${escapeHTML(item.Type)}</span>` : ''}
         </div>
       ` : '';
 
@@ -522,17 +522,24 @@
               </div>
               ` : ''}
 
-              ${storyText !== '' ? `
-              <div class="restaurant-story-block">
-                <span class="restaurant-block-label">🏛️ จุดเด่น & ความนิยม:</span>
-                <p class="restaurant-story-text">${escapeHTML(storyText)}</p>
-              </div>
-              ` : ''}
-
               ${menuText !== '' ? `
               <div class="restaurant-menu-block">
                 <span class="restaurant-block-label">⭐ เมนูแนะนำห้ามพลาด:</span>
                 <p class="restaurant-menu-text">${escapeHTML(menuText)}</p>
+              </div>
+              ` : ''}
+
+              ${storyText !== '' ? `
+              <div class="restaurant-story-block">
+                <details class="restaurant-story-details">
+                  <summary class="restaurant-story-summary">
+                    <span>🏛️ จุดเด่น & ความนิยม</span>
+                    <svg class="details-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </summary>
+                  <p class="restaurant-story-text">${escapeHTML(storyText)}</p>
+                </details>
               </div>
               ` : ''}
             </div>
