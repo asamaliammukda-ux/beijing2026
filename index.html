@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Beijing Winter Odyssey & New Year 2027 • Personal Trip Planner</title>
+  <meta name="description" content="Personal trip itinerary, Peking Duck culinary guide, and travel checklist for Beijing Winter & New Year Expedition.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Hero Header Section -->
+  <header class="hero-header" id="hero">
+    <img src="images/hero-bg.jpg?v=2" alt="Beijing Winter Skyline" class="hero-bg" id="heroBg">
+    <div class="hero-overlay"></div>
+    
+    <div class="hero-content">
+      <span class="hero-subtitle">Private Itinerary • 7 Days New Year Expedition</span>
+      <h1 class="hero-title">Beijing <span>Winter Odyssey</span></h1>
+      
+      <!-- Countdown Timer Container -->
+      <div class="countdown-container">
+        <div class="countdown-label">Departure Countdown</div>
+        <div class="countdown-boxes">
+          <div class="countdown-box">
+            <span class="countdown-number" id="cd-days">00</span>
+            <span class="countdown-unit">Days</span>
+          </div>
+          <span class="countdown-colon">:</span>
+          <div class="countdown-box">
+            <span class="countdown-number" id="cd-hours">00</span>
+            <span class="countdown-unit">Hours</span>
+          </div>
+          <span class="countdown-colon">:</span>
+          <div class="countdown-box">
+            <span class="countdown-number" id="cd-minutes">00</span>
+            <span class="countdown-unit">Mins</span>
+          </div>
+          <span class="countdown-colon">:</span>
+          <div class="countdown-box">
+            <span class="countdown-number" id="cd-seconds">00</span>
+            <span class="countdown-unit">Secs</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 Pill-Shaped Badges -->
+      <div class="hero-badges">
+        <!-- 1. Travel Dates Badge -->
+        <div class="pill-badge" title="Trip Travel Dates">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+          <span>Dec 29, 2026 - Jan 4, 2027</span>
+        </div>
+
+        <!-- 2. Hotel Name Badge -->
+        <div class="pill-badge" title="Primary Accommodations">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m0 0h2m0 0h2m-2 4h-2m-4 0H9m-4 0H3m14-8a2 2 0 11-4 0 2 2 0 014 0zM9 9a2 2 0 11-4 0 2 2 0 014 0z" />
+          </svg>
+          <span>Hanting Hotel (Sanlitun SOHO)</span>
+        </div>
+
+        <!-- 3. Trip Highlights Badge -->
+        <div class="pill-badge" title="Total Curated Experiences">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+          </svg>
+          <span id="highlights-badge-count">12 Attractions • 2 Roast Duck Spots</span>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- App Main Content Container -->
+  <div class="app-container">
+
+    <!-- Sticky Navigation Tabs, Search & Theme Toggle -->
+    <nav class="sticky-nav">
+      <div class="nav-tabs">
+        <button class="nav-tab-btn active" data-target="itinerary-section">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          Itinerary
+        </button>
+        <button class="nav-tab-btn" data-target="restaurants-section">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2C9.24 2 7 4.24 7 7c0 2.21 1.45 4.09 3.5 4.74V21a1.5 1.5 0 003 0v-9.26C15.55 11.09 17 9.21 17 7c0-2.76-2.24-5-5-5z" />
+          </svg>
+          Restaurants
+        </button>
+        <button class="nav-tab-btn" data-target="budget-section">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+          </svg>
+          Budget
+        </button>
+        <button class="nav-tab-btn" data-target="checklist-section">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          Checklist
+        </button>
+      </div>
+
+      <!-- Nav Controls (Search & Theme Toggle) -->
+      <div class="nav-controls">
+        <div class="search-wrapper">
+          <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+          <input type="text" id="searchInput" class="search-input" placeholder="Search itinerary, dining, budget...">
+        </div>
+
+        <!-- Sleek Light / Dark Mode Toggle Button -->
+        <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle Light/Dark Mode" title="Toggle Light/Dark Theme">
+          <!-- Sun Icon (shown in Light Mode) -->
+          <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+          <!-- Moon Icon (shown in Dark Mode) -->
+          <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Filter Bar for Days / Categories -->
+    <div class="filter-bar" id="filterBar">
+      <!-- Dynamically populated filter chips -->
+    </div>
+
+    <!-- 1. ITINERARY SECTION -->
+    <section id="itinerary-section" class="content-section">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">
+            <svg class="section-title-icon" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            Daily Itinerary Timeline
+          </h2>
+          <p class="section-subtext">Curated hour-by-hour winter expedition through Beijing</p>
+        </div>
+      </div>
+
+      <div class="itinerary-container" id="itinerary-timeline-wrapper">
+        <!-- Rendered dynamically from itinerary.json -->
+      </div>
+    </section>
+
+    <!-- 2. RESTAURANTS SECTION -->
+    <section id="restaurants-section" class="content-section" style="display: none;">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">
+            <svg class="section-title-icon" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2C9.24 2 7 4.24 7 7c0 2.21 1.45 4.09 3.5 4.74V21a1.5 1.5 0 003 0v-9.26C15.55 11.09 17 9.21 17 7c0-2.76-2.24-5-5-5z"/>
+            </svg>
+            Gourmet Restaurants & Dining
+          </h2>
+          <p class="section-subtext">Hand-picked Beijing cuisine, authentic Peking Roast Duck, and local street eats</p>
+        </div>
+
+        <div class="restaurants-controls">
+          <button class="view-btn active" id="gridViewBtn" title="Grid View">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+            </svg>
+          </button>
+          <button class="view-btn" id="listViewBtn" title="List View">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="restaurants-grid" id="restaurants-grid-wrapper">
+        <!-- Rendered dynamically from restaurants.json -->
+      </div>
+    </section>
+
+    <!-- 3. BUDGET SECTION -->
+    <section id="budget-section" class="content-section" style="display: none;">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">
+            <svg class="section-title-icon" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+            </svg>
+            Trip Budget & Expense Calculator
+          </h2>
+          <p class="section-subtext">Estimated expenses in Thai Baht (THB) & Chinese Yuan (CNY)</p>
+        </div>
+      </div>
+
+      <div id="budget-container">
+        <!-- Rendered dynamically from budget.csv -->
+      </div>
+    </section>
+
+    <!-- 4. CHECKLIST SECTION -->
+    <section id="checklist-section" class="content-section" style="display: none;">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">
+            <svg class="section-title-icon" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+            </svg>
+            Pre-Departure Checklist & Bookings
+          </h2>
+          <p class="section-subtext">Track documents, currency, transit passes, and hotel reservations</p>
+        </div>
+      </div>
+
+      <!-- Real-time Progress Bar Card -->
+      <div class="checklist-progress-card">
+        <div class="progress-info">
+          <span class="progress-text">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color: var(--accent-gold);">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            Preparation Progress
+          </span>
+          <span class="progress-percentage" id="checklistProgressText">0 / 0 Completed (0%)</span>
+        </div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" id="checklistProgressBar"></div>
+        </div>
+      </div>
+
+      <div class="checklist-categories-grid" id="checklist-container">
+        <!-- Rendered dynamically from checklist.json -->
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <p>Bespoke Trip Planner • Designed for <span>Beijing New Year Expedition</span></p>
+      <p>Data synchronized with <code>localStorage</code> • Fast Vanilla JS SPA Architecture</p>
+    </footer>
+
+  </div>
+
+  <!-- JavaScript Libraries & Entry Point -->
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

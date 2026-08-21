@@ -1,0 +1,239 @@
+{
+  "checklist_sections": [
+    {
+      "category_id": "prep",
+      "category_name": "เอกสาร & การเตรียมตัวเดินทาง (Travel Prep & Documents)",
+      "groups": [
+        {
+          "group_name": "เอกสารสำคัญ & ข้อกำหนดเข้าเมืองจีน",
+          "items": [
+            {
+              "id": "chk_passport",
+              "task": "หนังสือเดินทาง (Passport เล่มจริง อายุใช้งานเหลือมากกว่า 6 เดือน)",
+              "time_note": "ตรวจสอบก่อนเดินทาง 30 วัน",
+              "channel_note": "กรมการกงสุล กระทรวงการต่างประเทศ",
+              "badge_text": "Critical",
+              "badge_type": "danger"
+            },
+            {
+              "id": "chk_visa_free",
+              "task": "ตรวจสอบสิทธิ์ฟรีวีซ่าไทย-จีน 30 วัน (เตรียมตั๋วไป-กลับและใบจองโรงแรม)",
+              "time_note": "ก่อนบิน 7 วัน",
+              "channel_note": "ข้อตกลงยกเว้นวีซ่าไทย-จีนถาวร",
+              "badge_text": "Required",
+              "badge_type": "danger"
+            },
+            {
+              "id": "chk_insurance",
+              "task": "ทำประกันการเดินทางต่างประเทศ CHUBB (ครอบคลุมค่ารักษาและเที่ยวบิน)",
+              "time_note": "ซื้อก่อนเดินทาง 14 วัน",
+              "channel_note": "CHUBB Travel Insurance",
+              "badge_text": "High Priority",
+              "badge_type": "warning"
+            },
+            {
+              "id": "chk_china_customs",
+              "task": "กรอกแบบฟอร์มศุลกากรจีนขาเข้า (China Customs Declaration QR Code)",
+              "time_note": "ทำภายใน 24 ชม. ก่อนขึ้นเครื่อง",
+              "channel_note": "WeChat Mini Program ศุลกากรจีน",
+              "badge_text": "Required",
+              "badge_type": "danger"
+            }
+          ]
+        },
+        {
+          "group_name": "การเงิน & แอปพลิเคชันที่ต้องมีในจีน",
+          "items": [
+            {
+              "id": "chk_alipay_wechat",
+              "task": "ผูกบัตรเครดิต / Travel Card (YouTrip, Boarding Card) กับ Alipay และ WeChat Pay",
+              "time_note": "ยืนยันตัวตนก่อนเดินทาง 7 วัน",
+              "channel_note": "Alipay & WeChat Pay App",
+              "badge_text": "Critical",
+              "badge_type": "danger"
+            },
+            {
+              "id": "chk_esim_roaming",
+              "task": "สั่งซื้อและติดตั้ง eSIM China Unlimited Data (เปิด Roaming เล่น LINE/FB/IG ได้)",
+              "time_note": "เปิดใช้งานเมื่อถึงสนามบินปักกิ่ง",
+              "channel_note": "Esim - Best จีน Unlimited",
+              "badge_text": "High Priority",
+              "badge_type": "warning"
+            },
+            {
+              "id": "chk_didi_app",
+              "task": "ทดสอบฟังก์ชัน DiDi Ride-Hailing ในแอป Alipay สำหรับเรียกรถแท็กซี่",
+              "time_note": "เตรียมพร้อมก่อนเดินทาง",
+              "channel_note": "Alipay Mini-app: DiDi Chuxing",
+              "badge_text": "Convenient",
+              "badge_type": "info"
+            },
+            {
+              "id": "chk_amap_nav",
+              "task": "ติดตั้งแอปแผนที่ Amap (高德地图) และปักหมุดโรงแรม/สถานที่ท่องเที่ยว",
+              "time_note": "ติดตั้งล่วงหน้า",
+              "channel_note": "Amap (GaoDe Ditu)",
+              "badge_text": "Recommended",
+              "badge_type": "info"
+            },
+            {
+              "id": "chk_cny_cash",
+              "task": "แลกเงินสดหยวนสำรอง (500 - 1,000 RMB) เผื่อกรณีฉุกเฉิน",
+              "time_note": "แลกก่อนเดินทาง 3-5 วัน",
+              "channel_note": "Superrich / ธนาคารพาณิชย์",
+              "badge_text": "Recommended",
+              "badge_type": "info"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "bookings",
+      "category_name": "ตั๋ว การเดินทาง & ที่พัก (Bookings & Transportation)",
+      "groups": [
+        {
+          "group_name": "เที่ยวบิน & โรงแรมที่พัก",
+          "items": [
+            {
+              "id": "chk_flight_outbound",
+              "task": "เที่ยวบินขาไป BKK ✈ PEK (Air tickets - ฟ้าใสออกไปก่อน)",
+              "time_note": "29 ธ.ค. 2026 @ 10:40 AM - 03:50 PM",
+              "channel_note": "สายการบิน Air tickets (฿15,380)",
+              "badge_text": "Confirmed",
+              "badge_type": "success"
+            },
+            {
+              "id": "chk_hotel_sanlitun",
+              "task": "โรงแรม Sanlitun SOHO 6 คืน (แคมป์ออกไปก่อน)",
+              "time_note": "เช็คอิน 29 ธ.ค. 26 @ 17:50 | เช็คเอาต์ 4 ม.ค. 27 @ 10:00",
+              "channel_note": "จองที่พัก Sanlitun SOHO (1,700 THB/คืน)",
+              "badge_text": "Confirmed",
+              "badge_type": "success"
+            },
+            {
+              "id": "chk_flight_inbound",
+              "task": "เที่ยวบินขากลับ PEK ✈ BKK (Back to Thailand)",
+              "time_note": "4 ม.ค. 2027 @ 06:00 PM - 11:25 PM",
+              "channel_note": "สนามบินนานาชาติปักกิ่ง (PEK)",
+              "badge_text": "Confirmed",
+              "badge_type": "success"
+            }
+          ]
+        },
+        {
+          "group_name": "ตั๋วเข้าชมสถานที่ & ทริปนำเที่ยว (Attraction Tickets & Tours)",
+          "items": [
+            {
+              "id": "chk_universal_pass",
+              "task": "บัตรเข้าสวนสนุก Universal Studios Beijing 1-Day Pass",
+              "time_note": "เข้าชม 30 ธ.ค. 2026 @ 09:00 AM",
+              "channel_note": "จองตั๋วล่วงหน้า (500 RMB / ฿2,455)",
+              "badge_text": "Booked",
+              "badge_type": "success"
+            },
+            {
+              "id": "chk_lama_temple_ticket",
+              "task": "ตั๋วเข้าชมวัดลามะยงเหอกง (Lama Temple)",
+              "time_note": "เข้าชม 31 ธ.ค. 2026 @ 09:20 AM",
+              "channel_note": "WeChat Official Reservation (25 RMB / ฿123)",
+              "badge_text": "Booked",
+              "badge_type": "success"
+            },
+            {
+              "id": "chk_summer_palace_ticket",
+              "task": "ตั๋วเข้าชมพระราชวังฤดูร้อน (Summer Palace)",
+              "time_note": "เข้าชม 1 ม.ค. 2027 @ 09:10 AM",
+              "channel_note": "WeChat Mini Program (60 RMB / ฿295)",
+              "badge_text": "Booked",
+              "badge_type": "success"
+            },
+            {
+              "id": "chk_gubei_simatai_tour",
+              "task": "1-Day Trip: เมืองน้ำกู่เป่ย (Gubei Water Town) & กำแพงเมืองจีนด่านซือหม่าไถ (Simatai)",
+              "time_note": "ทัวร์ 2 ม.ค. 2027 @ 11:30 AM - 08:00 PM",
+              "channel_note": "Group Tour Charter (326 RMB / ฿1,600)",
+              "badge_text": "Booked",
+              "badge_type": "success"
+            },
+            {
+              "id": "chk_forbidden_city_tour",
+              "task": "4h 30m Group Tour: พระราชวังต้องห้าม (Forbidden City) + จัตุรัสเทียนอันเหมิน",
+              "time_note": "เข้าชม 3 ม.ค. 2027 @ 08:00 AM",
+              "channel_note": "Group Tour Booking (204 RMB / ฿1,000)",
+              "badge_text": "Booked",
+              "badge_type": "success"
+            },
+            {
+              "id": "chk_temple_heaven_ticket",
+              "task": "ตั๋วเข้าชมหอสักการะฟ้าเทียนถัน (Temple of Heaven)",
+              "time_note": "เข้าชม 3 ม.ค. 2027 @ 02:50 PM",
+              "channel_note": "WeChat Official Reservation (28 RMB / ฿137)",
+              "badge_text": "Booked",
+              "badge_type": "success"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "winter_packing",
+      "category_name": "สัมภาระ & อุปกรณ์กันหนาวปักกิ่ง (Winter Packing & Gear)",
+      "groups": [
+        {
+          "group_name": "เสื้อผ้าเครื่องแต่งกายสภาพอากาศติดลบ (-5°C ถึง -10°C)",
+          "items": [
+            {
+              "id": "chk_heattech_layers",
+              "task": "เสื้อและกางเกงลองจอน Ultra Warm Heattech (เตรียม 3-4 ชุด)",
+              "time_note": "เตรียมพร้อมก่อนแพ็กกระเป๋า",
+              "channel_note": "จำเป็นมากสำหรับฤดูหนาวปักกิ่ง",
+              "badge_text": "High Priority",
+              "badge_type": "warning"
+            },
+            {
+              "id": "chk_down_jacket",
+              "task": "เสื้อโค้ทกันหนาวขนเป็ด (Down Jacket) ชนิดกันลมและละอองหิมะ",
+              "time_note": "เตรียมไว้สวมใส่ตั้งแต่ลงเครื่อง",
+              "channel_note": "อุณหภูมิติดลบ ลมแรงบริเวณกำแพงเมืองจีน",
+              "badge_text": "Critical",
+              "badge_type": "danger"
+            },
+            {
+              "id": "chk_winter_accessories",
+              "task": "หมวกไหมพรมคลุมหู, ผ้าพันคอ, ถุงมือทัชสกรีน และถุงเท้าขนสัตว์",
+              "time_note": "พกติดตัวขึ้นเครื่อง",
+              "channel_note": "ป้องกันลมหนาวกัดหูและปลายนิ้ว",
+              "badge_text": "Recommended",
+              "badge_type": "info"
+            },
+            {
+              "id": "chk_heat_pads",
+              "task": "ถุงร้อนกันหนาว (Heat Packs / แผ่นแปะร้อนตัวและแปะโทรศัพท์มือถือ)",
+              "time_note": "เตรียม 10-15 ซอง",
+              "channel_note": "มือถือแบตเตอรี่จะหมดเร็วในอากาศหนาวจัด",
+              "badge_text": "Convenient",
+              "badge_type": "info"
+            },
+            {
+              "id": "chk_powerbank",
+              "task": "Power Bank (ความจุไม่เกิน 20,000 mAh มีตัวเลขระบุชัดเจนตามกฎการบินจีน)",
+              "time_note": "พกพาขึ้นเครื่อง ห้ามโหลดใต้เครื่อง",
+              "channel_note": "ข้อกำหนดความปลอดภัยการท่าอากาศยานจีน",
+              "badge_text": "Required",
+              "badge_type": "danger"
+            },
+            {
+              "id": "chk_lip_lotion",
+              "task": "ลิปมัน, โลชั่นบำรุงผิวเข้มข้น และยาประจำตัว",
+              "time_note": "อากาศปักกิ่งหน้าหนาวแห้งมาก",
+              "channel_note": "พกขนาดสำหรับเดินทาง",
+              "badge_text": "Recommended",
+              "badge_type": "info"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
