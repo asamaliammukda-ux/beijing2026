@@ -1036,6 +1036,13 @@ body {
   color: #FFFFFF;
 }
 
+.type-badge[data-type="Coffee"],
+.type-badge-inline[data-type="Coffee"] {
+  background: rgba(180, 83, 9, 0.92);
+  border-color: rgba(217, 119, 6, 0.6);
+  color: #FFFFFF;
+}
+
 /* Badges for cards without images */
 .restaurant-badges-inline {
   display: flex;
