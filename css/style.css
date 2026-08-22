@@ -213,18 +213,18 @@ body {
   width: 100%;
   height: 100%;
   background: linear-gradient(180deg,
-      rgba(9, 13, 22, 0.65) 0%,
-      rgba(9, 13, 22, 0.88) 60%,
-      rgba(9, 13, 22, 0.98) 100%);
+      rgba(9, 13, 22, 0.35) 0%,
+      rgba(9, 13, 22, 0.55) 60%,
+      rgba(9, 13, 22, 0.85) 100%);
   z-index: 2;
   transition: var(--theme-transition);
 }
 
 [data-theme="light"] .hero-overlay {
   background: linear-gradient(180deg,
-      rgba(15, 23, 42, 0.55) 0%,
-      rgba(15, 23, 42, 0.75) 60%,
-      rgba(248, 250, 252, 0.98) 100%);
+      rgba(15, 23, 42, 0.30) 0%,
+      rgba(15, 23, 42, 0.50) 60%,
+      rgba(248, 250, 252, 0.90) 100%);
 }
 
 .hero-content {
@@ -244,12 +244,14 @@ body {
   font-weight: 600;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: var(--accent-gold-light);
-  background: rgba(245, 158, 11, 0.15);
-  border: 1px solid rgba(245, 158, 11, 0.35);
+  color: #FDE047;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(253, 224, 71, 0.45);
   padding: 0.4rem 1.2rem;
   border-radius: var(--radius-pill);
   backdrop-filter: blur(8px);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .hero-title {
@@ -258,7 +260,7 @@ body {
   font-weight: 700;
   color: #FFFFFF;
   line-height: 1.15;
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
 }
 
 [data-theme="light"] .hero-title {
@@ -266,9 +268,11 @@ body {
 }
 
 .hero-title span {
-  background: linear-gradient(135deg, #FFF 30%, var(--accent-gold-light) 100%);
+  color: #FDE047;
+  background: linear-gradient(135deg, #FFFFFF 30%, #FDE047 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.7));
 }
 
 /* Countdown Timer */
@@ -278,11 +282,13 @@ body {
 }
 
 .countdown-label {
-  font-size: 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: #CBD5E1;
+  color: #FDE047;
   margin-bottom: 0.75rem;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.85);
 }
 
 .countdown-boxes {
@@ -294,9 +300,9 @@ body {
 }
 
 .countdown-box {
-  background: rgba(15, 23, 42, 0.75);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(12px);
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(8px);
   border-radius: var(--radius-md);
   padding: 0.75rem 1.1rem;
   min-width: 75px;
@@ -308,31 +314,36 @@ body {
 }
 
 .countdown-box:hover {
-  border-color: var(--accent-gold);
+  border-color: #FDE047;
   transform: translateY(-2px);
+  background: rgba(0, 0, 0, 0.75);
 }
 
 .countdown-number {
   font-family: var(--font-mono);
   font-size: 1.75rem;
   font-weight: 700;
-  color: var(--accent-gold-light);
+  color: #FFFFFF;
   line-height: 1;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
 }
 
 .countdown-unit {
   font-size: 0.65rem;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: #94A3B8;
+  color: #E2E8F0;
   margin-top: 0.3rem;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
 }
 
 .countdown-colon {
   font-family: var(--font-mono);
   font-size: 1.5rem;
   font-weight: 700;
-  color: #94A3B8;
+  color: #FDE047;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8);
 }
 
 /* Badges Bar */
@@ -349,27 +360,30 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
   padding: 0.6rem 1.1rem;
   border-radius: var(--radius-pill);
   font-size: 0.85rem;
-  font-weight: 500;
+  font-weight: 600;
   color: #FFFFFF;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
   transition: var(--transition);
 }
 
 .pill-badge:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(245, 158, 11, 0.5);
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
 }
 
 .pill-badge svg {
   width: 18px;
   height: 18px;
-  color: var(--accent-gold);
+  color: #FFFFFF;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.6));
   flex-shrink: 0;
 }
 
