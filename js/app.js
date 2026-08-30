@@ -13,16 +13,22 @@
     restaurants: [],
     budget: [],
     checklist: {},
+    hero: {},
     activeSection: 'itinerary-section',
     restaurantView: 'grid', // 'grid' | 'list'
     activeDayFilter: 'ALL',
     activeBudgetFilter: 'ALL',
     searchQuery: '',
-    targetDepartureDate: new Date('2026-12-29T08:00:00+08:00') // Target departure date: Dec 29, 2026
+    targetDepartureDate: null
   };
 
   // DOM Elements Cache
   const elements = {
+    hero: document.getElementById('hero'),
+    heroSubtitle: document.getElementById('heroSubtitle'),
+    heroTitle: document.getElementById('heroTitle'),
+    badgeDates: document.getElementById('badgeDates'),
+    badgeHotel: document.getElementById('badgeHotel'),
     cdDays: document.getElementById('cd-days'),
     cdHours: document.getElementById('cd-hours'),
     cdMinutes: document.getElementById('cd-minutes'),
@@ -54,6 +60,13 @@
     startCountdown();
     setupEventListeners();
     fetchAppData();
+    registerServiceWorker();
+  }
+
+  function registerServiceWorker() {
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').catch(err => console.warn('Service worker registration failed:', err));
+    }
   }
 
   /* ==========================================================================
@@ -126,21 +139,28 @@
     try {
       showLoadingState();
 
-      const [itineraryData, restaurantsData, budgetData, checklistRes] = await Promise.all([
+      const [itineraryData, restaurantsData, budgetData, checklistRes, heroRes] = await Promise.all([
         fetchAndParseCSV('data/itinerary.csv'),
         fetchAndParseCSV('data/restaurants.csv'),
         fetchAndParseCSV('data/budget.csv'),
-        fetch('data/checklist.json')
+        fetch('data/checklist.json'),
+        fetch('data/hero.json')
       ]);
 
       if (!checklistRes.ok) {
         throw new Error('Failed to load checklist.json file.');
+      }
+      if (!heroRes.ok) {
+        throw new Error('Failed to load hero.json file.');
       }
 
       state.itinerary = itineraryData;
       state.restaurants = restaurantsData;
       state.budget = budgetData;
       state.checklist = await checklistRes.json();
+      state.hero = await heroRes.json();
+
+      renderHero();
 
       // Update Highlights Count Badge
       if (elements.highlightsBadgeCount && state.itinerary.length) {
@@ -161,11 +181,29 @@
     }
   }
 
+  /**
+   * Render hero header text (subtitle, title, travel dates & hotel badges) from hero.json
+   */
+  function renderHero() {
+    const hero = state.hero;
+    if (!hero) return;
+
+    if (elements.heroSubtitle) elements.heroSubtitle.textContent = hero.subtitle || '';
+    if (elements.heroTitle) {
+      elements.heroTitle.innerHTML = `${escapeHTML(hero.titleMain || '')} <span>${escapeHTML(hero.titleAccent || '')}</span>`;
+    }
+    if (elements.badgeDates) elements.badgeDates.textContent = hero.travelDates || '';
+    if (elements.badgeHotel) elements.badgeHotel.textContent = hero.hotel || '';
+  }
+
   /* ==========================================================================
      3. COUNTDOWN TIMER LOGIC
      ========================================================================== */
 
   function startCountdown() {
+    const departureAttr = elements.hero ? elements.hero.getAttribute('data-departure') : null;
+    state.targetDepartureDate = new Date(departureAttr || '2026-12-29T08:00:00+08:00');
+
     function updateTimer() {
       const now = new Date().getTime();
       const distance = state.targetDepartureDate.getTime() - now;
@@ -230,24 +268,33 @@
       elements.restaurantsGrid.classList.add('list-view');
     });
 
-    // Real-time Search Input
-    elements.searchInput.addEventListener('input', (e) => {
+    // Real-time Search Input (debounced to avoid re-rendering on every keystroke)
+    elements.searchInput.addEventListener('input', debounce((e) => {
       state.searchQuery = e.target.value.toLowerCase().trim();
       renderItinerary();
       renderRestaurants();
       renderBudget();
-    });
+    }, 200));
+  }
+
+  /**
+   * Returns a debounced version of fn that only runs after `delay` ms of inactivity
+   */
+  function debounce(fn, delay) {
+    let timeoutId;
+    return function (...args) {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => fn.apply(this, args), delay);
+    };
   }
 
   function switchSection(targetId) {
     state.activeSection = targetId;
 
     elements.navTabs.forEach(tab => {
-      if (tab.getAttribute('data-target') === targetId) {
-        tab.classList.add('active');
-      } else {
-        tab.classList.remove('active');
-      }
+      const isActive = tab.getAttribute('data-target') === targetId;
+      tab.classList.toggle('active', isActive);
+      tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
     });
 
     elements.sections.forEach(sec => {
@@ -929,8 +976,11 @@
   }
 
   function showErrorState(msg) {
-    if (elements.itineraryContainer) elements.itineraryContainer.innerHTML = `<div style="text-align: center; padding: 2rem; color: var(--badge-danger-text);">Error loading data: ${escapeHTML(msg)}</div>`;
-    if (elements.budgetContainer) elements.budgetContainer.innerHTML = `<div style="text-align: center; padding: 2rem; color: var(--badge-danger-text);">Error loading data: ${escapeHTML(msg)}</div>`;
+    const errorHTML = `<div style="text-align: center; padding: 2rem; color: var(--badge-danger-text);">Error loading data: ${escapeHTML(msg)}</div>`;
+    if (elements.itineraryContainer) elements.itineraryContainer.innerHTML = errorHTML;
+    if (elements.restaurantsGrid) elements.restaurantsGrid.innerHTML = errorHTML;
+    if (elements.budgetContainer) elements.budgetContainer.innerHTML = errorHTML;
+    if (elements.checklistContainer) elements.checklistContainer.innerHTML = errorHTML;
   }
 
 })();

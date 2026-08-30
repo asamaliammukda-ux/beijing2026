@@ -1,0 +1,11 @@
+{
+  "name": "Beijing Winter Odyssey & New Year 2027",
+  "short_name": "Beijing Trip",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
+  "icons": [
+    { "src": "images/hero-bg.jpg", "sizes": "any", "type": "image/jpeg" }
+  ]
+}
