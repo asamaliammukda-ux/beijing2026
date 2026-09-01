@@ -22,6 +22,16 @@
     targetDepartureDate: null
   };
 
+  // Curated itinerary highlights shown first in the Itinerary filter bar (matched by Image path)
+  const HIGHLIGHT_IMAGES = new Set([
+    'images/itinerary/universal-studios.jpg',
+    'images/itinerary/lama-temple.jpg',
+    'images/itinerary/summer-palace.jpg',
+    'images/itinerary/simatai-great-wall.jpg',
+    'images/itinerary/forbidden-city.jpg',
+    'images/itinerary/temple-of-heaven.jpg'
+  ]);
+
   // DOM Elements Cache
   const elements = {
     hero: document.getElementById('hero'),
@@ -322,12 +332,13 @@
     elements.filterBar.innerHTML = '';
 
     if (state.activeSection === 'itinerary-section') {
-      // Get unique Days
-      const days = ['ALL', ...new Set(state.itinerary.map(item => item.Date))];
-      days.forEach(day => {
+      // Highlight category first, then unique Days, All Days last
+      const days = [...new Set(state.itinerary.map(item => item.Date))];
+      const options = ['HIGHLIGHT', ...days, 'ALL'];
+      options.forEach(day => {
         const chip = document.createElement('button');
         chip.className = `filter-chip ${state.activeDayFilter === day ? 'active' : ''}`;
-        chip.textContent = day === 'ALL' ? 'All Days' : day.split('-')[0].trim();
+        chip.textContent = day === 'HIGHLIGHT' ? 'Highlights' : day === 'ALL' ? 'All Days' : day.split('-')[0].trim();
         chip.addEventListener('click', () => {
           state.activeDayFilter = day;
           renderFilterBar();
@@ -336,8 +347,8 @@
         elements.filterBar.appendChild(chip);
       });
     } else if (state.activeSection === 'restaurants-section') {
-      // Get unique types
-      const types = ['ALL', ...new Set(state.restaurants.map(item => item.Type.split('•')[0].trim()))];
+      // Get unique types (Highlights already appears first in the data), All Dining last
+      const types = [...new Set(state.restaurants.map(item => item.Type.split('•')[0].trim())), 'ALL'];
       types.forEach(type => {
         const chip = document.createElement('button');
         chip.className = `filter-chip ${state.activeDayFilter === type ? 'active' : ''}`;
@@ -373,8 +384,10 @@
   function renderItinerary() {
     let filtered = state.itinerary;
 
-    // Filter by Day
-    if (state.activeDayFilter !== 'ALL') {
+    // Filter by Day (or curated Highlights)
+    if (state.activeDayFilter === 'HIGHLIGHT') {
+      filtered = filtered.filter(item => HIGHLIGHT_IMAGES.has(item.Image));
+    } else if (state.activeDayFilter !== 'ALL') {
       filtered = filtered.filter(item => item.Date === state.activeDayFilter);
     }
 

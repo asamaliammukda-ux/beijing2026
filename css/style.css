@@ -493,8 +493,12 @@ body {
   pointer-events: none;
 }
 
-/* Sleek Theme Toggle Button */
+/* Sleek Theme Toggle Button (fixed top-most, always visible) */
 .theme-toggle-btn {
+  position: fixed;
+  top: max(1rem, env(safe-area-inset-top, 1rem));
+  right: max(1rem, env(safe-area-inset-right, 1rem));
+  z-index: 500;
   background: var(--pill-bg);
   border: 1px solid var(--border-glass);
   color: var(--text-primary);
@@ -507,6 +511,8 @@ body {
   cursor: pointer;
   transition: var(--theme-transition);
   flex-shrink: 0;
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-card);
 }
 
 .theme-toggle-btn:hover {
@@ -2130,32 +2136,30 @@ body {
   }
 
   .nav-tabs {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
+    width: 100%;
+    justify-content: space-between;
     flex-wrap: nowrap;
-    gap: 0.2rem;
-  }
-
-  .nav-tabs::-webkit-scrollbar {
-    display: none;
+    gap: 0.15rem;
   }
 
   .nav-tab-btn {
-    font-size: 0.775rem;
-    padding: 0.45rem 0.75rem;
-    gap: 0.35rem;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 0.65rem;
+    padding: 0.5rem 0.25rem;
+    gap: 0.2rem;
     white-space: nowrap;
   }
 
   .nav-tab-btn svg {
-    width: 15px;
-    height: 15px;
+    width: 18px;
+    height: 18px;
   }
 
-  .search-wrapper {
+  .nav-controls {
     display: none;
-    /* Hide search on small mobile navbar */
+    /* Search hidden + theme toggle now fixed top-most on mobile */
   }
 
   /* Filter Bar on Mobile */
