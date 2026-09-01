@@ -586,7 +586,7 @@ body {
 /* Home Section */
 .home-intro-text {
   color: var(--text-secondary);
-  font-size: 0.95rem;
+  font-size: 1.15rem;
   line-height: 1.7;
 }
 
