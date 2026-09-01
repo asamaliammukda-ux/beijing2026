@@ -106,7 +106,13 @@
     <!-- Sticky Navigation Tabs, Search & Theme Toggle -->
     <nav class="sticky-nav">
       <div class="nav-tabs" role="tablist">
-        <button class="nav-tab-btn active" data-target="itinerary-section" role="tab" aria-selected="true">
+        <button class="nav-tab-btn active" data-target="home-section" role="tab" aria-selected="true">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7m-9-2v10a1 1 0 001 1h3m-4-1v-6a1 1 0 011-1h2a1 1 0 011 1v6m-4 1h4" />
+          </svg>
+          Home
+        </button>
+        <button class="nav-tab-btn" data-target="itinerary-section" role="tab" aria-selected="false">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
@@ -148,8 +154,41 @@
       <!-- Dynamically populated filter chips -->
     </div>
 
+    <!-- 0. HOME SECTION -->
+    <section id="home-section" class="content-section">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">
+            <svg class="section-title-icon" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7m-9-2v10a1 1 0 001 1h3m-4-1v-6a1 1 0 011-1h2a1 1 0 011 1v6m-4 1h4"/>
+            </svg>
+            Trip Overview
+          </h2>
+          <p class="section-subtext">A quick look at your Beijing Winter Odyssey before diving into the details</p>
+        </div>
+      </div>
+
+      <div class="checklist-progress-card">
+        <p class="home-intro-text" id="homeIntroText"><!-- Rendered dynamically from hero.json --></p>
+      </div>
+
+      <div class="budget-summary-grid" id="home-stats-wrapper">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <h3 class="category-title home-subheading">✨ Trip Highlights</h3>
+      <div class="restaurants-grid" id="home-highlights-wrapper">
+        <!-- Rendered dynamically from itinerary.json -->
+      </div>
+
+      <h3 class="category-title home-subheading">🍽️ Must-Try Dining</h3>
+      <div class="restaurants-grid" id="home-dining-wrapper">
+        <!-- Rendered dynamically from restaurants.json -->
+      </div>
+    </section>
+
     <!-- 1. ITINERARY SECTION -->
-    <section id="itinerary-section" class="content-section">
+    <section id="itinerary-section" class="content-section" style="display: none;">
       <div class="section-header">
         <div>
           <h2 class="section-title">

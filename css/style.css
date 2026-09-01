@@ -583,6 +583,26 @@ body {
   border-color: var(--accent-gold);
 }
 
+/* Home Section */
+.home-intro-text {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.home-subheading {
+  margin: 0 0 1.25rem;
+}
+
+#home-highlights-wrapper,
+#home-dining-wrapper {
+  margin-bottom: 2.5rem;
+}
+
+.home-nav-card {
+  cursor: pointer;
+}
+
 /* Section Title Header */
 .section-header {
   display: flex;
@@ -2146,15 +2166,17 @@ body {
     flex: 1;
     flex-direction: column;
     justify-content: center;
-    font-size: 0.65rem;
-    padding: 0.5rem 0.25rem;
+    font-size: 0.6rem;
+    padding: 0.45rem 0.1rem;
     gap: 0.2rem;
-    white-space: nowrap;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.15;
   }
 
   .nav-tab-btn svg {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
   }
 
   .nav-controls {

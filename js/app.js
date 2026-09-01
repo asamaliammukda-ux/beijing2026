@@ -14,9 +14,10 @@
     budget: [],
     checklist: {},
     hero: {},
-    activeSection: 'itinerary-section',
+    activeSection: 'home-section',
     restaurantView: 'grid', // 'grid' | 'list'
-    activeDayFilter: 'ALL',
+    activeItineraryFilter: 'HIGHLIGHT',
+    activeRestaurantFilter: 'Highlights',
     activeBudgetFilter: 'ALL',
     searchQuery: '',
     targetDepartureDate: null
@@ -56,7 +57,11 @@
     checklistContainer: document.getElementById('checklist-container'),
     checklistProgressBar: document.getElementById('checklistProgressBar'),
     checklistProgressText: document.getElementById('checklistProgressText'),
-    highlightsBadgeCount: document.getElementById('highlights-badge-count')
+    highlightsBadgeCount: document.getElementById('highlights-badge-count'),
+    homeIntroText: document.getElementById('homeIntroText'),
+    homeStatsWrapper: document.getElementById('home-stats-wrapper'),
+    homeHighlightsWrapper: document.getElementById('home-highlights-wrapper'),
+    homeDiningWrapper: document.getElementById('home-dining-wrapper')
   };
 
   /* ==========================================================================
@@ -143,6 +148,16 @@
   }
 
   /**
+   * Sums a numeric budget column (e.g. 'Price (THB)') across a set of budget rows
+   */
+  function sumBudgetColumn(rows, column) {
+    return rows.reduce((acc, row) => {
+      const val = parseFloat(String(row[column] || '').replace(/[^0-9.-]+/g, '')) || 0;
+      return acc + val;
+    }, 0);
+  }
+
+  /**
    * Fetch itinerary.csv, restaurants.csv, budget.csv, and checklist.json concurrently using Promise.all()
    */
   async function fetchAppData() {
@@ -183,7 +198,11 @@
       renderRestaurants();
       renderBudget();
       renderChecklist();
+      renderHome();
       updateChecklistProgress();
+
+      // Home is the default landing tab — it has no day/type filters
+      elements.filterBar.style.display = 'none';
 
     } catch (error) {
       console.error('Error fetching trip data:', error);
@@ -204,6 +223,84 @@
     }
     if (elements.badgeDates) elements.badgeDates.textContent = hero.travelDates || '';
     if (elements.badgeHotel) elements.badgeHotel.textContent = hero.hotel || '';
+  }
+
+  /**
+   * Render the Home overview tab: trip description, quick stats, and highlight
+   * cards pulled from the itinerary and restaurants data already in state.
+   */
+  function renderHome() {
+    if (elements.homeIntroText) {
+      elements.homeIntroText.textContent = (state.hero && state.hero.description) || '';
+    }
+
+    const dayCount = new Set(state.itinerary.map(item => item.Date)).size;
+    const totalTHB = sumBudgetColumn(state.budget, 'Price (THB)');
+
+    if (elements.homeStatsWrapper) {
+      elements.homeStatsWrapper.innerHTML = `
+        <div class="budget-summary-card card-thb">
+          <div class="summary-top"><span class="summary-label">Trip Days</span></div>
+          <div class="summary-amount">${dayCount}</div>
+        </div>
+        <div class="budget-summary-card card-cny">
+          <div class="summary-top"><span class="summary-label">Activities</span></div>
+          <div class="summary-amount">${state.itinerary.length}</div>
+        </div>
+        <div class="budget-summary-card card-thb">
+          <div class="summary-top"><span class="summary-label">Dining Spots</span></div>
+          <div class="summary-amount">${state.restaurants.length}</div>
+        </div>
+        <div class="budget-summary-card card-cny">
+          <div class="summary-top"><span class="summary-label">Est. Budget</span></div>
+          <div class="summary-amount">฿${totalTHB.toLocaleString('th-TH', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}</div>
+        </div>
+      `;
+    }
+
+    if (elements.homeHighlightsWrapper) {
+      const highlightStops = state.itinerary.filter(item => HIGHLIGHT_IMAGES.has(item.Image));
+      elements.homeHighlightsWrapper.innerHTML = highlightStops.map(item => `
+        <div class="restaurant-card has-image home-nav-card" data-nav="itinerary-section">
+          <div class="restaurant-img-wrapper">
+            <img src="${escapeHTML(item.Image.trim())}" alt="${escapeHTML(item.Topic)}" class="restaurant-img" loading="lazy">
+            <span class="type-badge">${escapeHTML(item.Date.trim())}</span>
+          </div>
+          <div class="restaurant-info">
+            <div class="restaurant-content-top">
+              <h3 class="restaurant-name">${escapeHTML(item.Topic)}</h3>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    if (elements.homeDiningWrapper) {
+      const highlightDining = state.restaurants.filter(item => (item.Type || '').toLowerCase().includes('highlight'));
+      elements.homeDiningWrapper.innerHTML = highlightDining.map(item => `
+        <div class="restaurant-card has-image home-nav-card" data-nav="restaurants-section">
+          <div class="restaurant-img-wrapper">
+            <img src="${escapeHTML(item.Image.trim())}" alt="${escapeHTML(item.List)}" class="restaurant-img" loading="lazy">
+            ${item.Price ? `<span class="price-badge">${escapeHTML(item.Price)}</span>` : ''}
+          </div>
+          <div class="restaurant-info">
+            <div class="restaurant-content-top">
+              <h3 class="restaurant-name">${escapeHTML(item.List)}</h3>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Clicking a Home highlight card jumps straight to its tab, filtered to Highlights
+    document.querySelectorAll('#home-highlights-wrapper .home-nav-card, #home-dining-wrapper .home-nav-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const targetId = card.getAttribute('data-nav');
+        if (targetId === 'itinerary-section') state.activeItineraryFilter = 'HIGHLIGHT';
+        if (targetId === 'restaurants-section') state.activeRestaurantFilter = 'Highlights';
+        switchSection(targetId);
+      });
+    });
   }
 
   /* ==========================================================================
@@ -316,7 +413,7 @@
     });
 
     // Toggle filter bar visibility based on section
-    if (targetId === 'checklist-section') {
+    if (targetId === 'home-section' || targetId === 'checklist-section') {
       elements.filterBar.style.display = 'none';
     } else {
       elements.filterBar.style.display = 'flex';
@@ -337,10 +434,10 @@
       const options = ['HIGHLIGHT', ...days, 'ALL'];
       options.forEach(day => {
         const chip = document.createElement('button');
-        chip.className = `filter-chip ${state.activeDayFilter === day ? 'active' : ''}`;
+        chip.className = `filter-chip ${state.activeItineraryFilter === day ? 'active' : ''}`;
         chip.textContent = day === 'HIGHLIGHT' ? 'Highlights' : day === 'ALL' ? 'All Days' : day.split('-')[0].trim();
         chip.addEventListener('click', () => {
-          state.activeDayFilter = day;
+          state.activeItineraryFilter = day;
           renderFilterBar();
           renderItinerary();
         });
@@ -351,10 +448,10 @@
       const types = [...new Set(state.restaurants.map(item => item.Type.split('•')[0].trim())), 'ALL'];
       types.forEach(type => {
         const chip = document.createElement('button');
-        chip.className = `filter-chip ${state.activeDayFilter === type ? 'active' : ''}`;
+        chip.className = `filter-chip ${state.activeRestaurantFilter === type ? 'active' : ''}`;
         chip.textContent = type === 'ALL' ? 'All Dining' : type;
         chip.addEventListener('click', () => {
-          state.activeDayFilter = type;
+          state.activeRestaurantFilter = type;
           renderFilterBar();
           renderRestaurants();
         });
@@ -385,10 +482,10 @@
     let filtered = state.itinerary;
 
     // Filter by Day (or curated Highlights)
-    if (state.activeDayFilter === 'HIGHLIGHT') {
+    if (state.activeItineraryFilter === 'HIGHLIGHT') {
       filtered = filtered.filter(item => HIGHLIGHT_IMAGES.has(item.Image));
-    } else if (state.activeDayFilter !== 'ALL') {
-      filtered = filtered.filter(item => item.Date === state.activeDayFilter);
+    } else if (state.activeItineraryFilter !== 'ALL') {
+      filtered = filtered.filter(item => item.Date === state.activeItineraryFilter);
     }
 
     // Filter by Search Query
@@ -500,8 +597,8 @@
     let filtered = state.restaurants;
 
     // Filter by Type
-    if (state.activeDayFilter !== 'ALL') {
-      filtered = filtered.filter(item => (item.Type || '').toLowerCase().includes(state.activeDayFilter.toLowerCase()));
+    if (state.activeRestaurantFilter !== 'ALL') {
+      filtered = filtered.filter(item => (item.Type || '').toLowerCase().includes(state.activeRestaurantFilter.toLowerCase()));
     }
 
     // Filter by Search Query
@@ -565,6 +662,16 @@
         </a>
       ` : '';
 
+      const hasLink = Boolean(item.Link && typeof item.Link === 'string' && item.Link.trim() !== '');
+      const linkHTML = hasLink ? `
+        <a href="${escapeHTML(item.Link.trim())}" target="_blank" rel="noopener noreferrer" class="amap-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg>
+          More Info
+        </a>
+      ` : '';
+
       html += `
         <div class="restaurant-card ${hasImage ? 'has-image' : 'no-image'}">
           ${imageHTML}
@@ -615,6 +722,7 @@
               </p>
               ` : ''}
               ${amapHTML}
+              ${linkHTML}
             </div>
           </div>
         </div>
@@ -648,15 +756,8 @@
     }
 
     // Calculations
-    const totalTHB = filtered.reduce((acc, row) => {
-      const val = parseFloat(String(row['Price (THB)'] || '').replace(/[^0-9.-]+/g, '')) || 0;
-      return acc + val;
-    }, 0);
-
-    const totalCNY = filtered.reduce((acc, row) => {
-      const val = parseFloat(String(row['Price (CNY)'] || '').replace(/[^0-9.-]+/g, '')) || 0;
-      return acc + val;
-    }, 0);
+    const totalTHB = sumBudgetColumn(filtered, 'Price (THB)');
+    const totalCNY = sumBudgetColumn(filtered, 'Price (CNY)');
 
     let html = `
       <!-- Exchange Rate Reference Banner -->
