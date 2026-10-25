@@ -28,7 +28,7 @@
     'images/itinerary/universal-studios.jpg',
     'images/itinerary/lama-temple.jpg',
     'images/itinerary/summer-palace.jpg',
-    'images/itinerary/simatai-great-wall.jpg',
+    'images/itinerary/mutianyu-great-wall.jpg',
     'images/itinerary/forbidden-city.jpg',
     'images/itinerary/temple-of-heaven.jpg'
   ]);
