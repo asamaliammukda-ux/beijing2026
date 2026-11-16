@@ -113,9 +113,9 @@
             },
             {
               "id": "chk_flight_inbound",
-              "task": "เที่ยวบินขากลับ CA803 ✈ BKK (Back to Thailand)",
+              "task": "เที่ยวบินขากลับ CA803 PKX ✈ BKK (Back to Thailand)",
               "time_note": "4 ม.ค. 2027 @ 06:00 PM - 11:25 PM",
-              "channel_note": "สนามบินนานาชาติปักกิ่ง (PEK)",
+              "channel_note": "ท่าอากาศยานนานาชาติปักกิ่งต้าซิง (Beijing Daxing International Airport - PKX)",
               "badge_text": "Confirmed",
               "badge_type": "success"
             }
@@ -128,7 +128,7 @@
               "id": "chk_universal_pass",
               "task": "บัตรเข้าสวนสนุก Universal Studios Beijing 1-Day Pass",
               "time_note": "เข้าชม 30 ธ.ค. 2026 @ 09:00 AM",
-              "channel_note": "camp จองแล้วผ่าน klook (352 RMB / ฿1,742)",
+              "channel_note": "camp จองแล้วผ่าน klook (343 RMB / ฿1,742)",
               "badge_text": "Booked",
               "badge_type": "success"
             },
@@ -136,7 +136,7 @@
               "id": "chk_lama_temple_ticket",
               "task": "ตั๋วเข้าชมวัดลามะยงเหอกง (Lama Temple)",
               "time_note": "เข้าชม 31 ธ.ค. 2026 @ 09:20 AM",
-              "channel_note": "WeChat Official Reservation (25 RMB / ฿123)",
+              "channel_note": "WeChat Official Reservation (25 RMB / ฿127)",
               "badge_text": "Booked",
               "badge_type": "success"
             },
@@ -144,7 +144,7 @@
               "id": "chk_summer_palace_ticket",
               "task": "ตั๋วเข้าชมพระราชวังฤดูร้อน (Summer Palace)",
               "time_note": "เข้าชม 1 ม.ค. 2027 @ 09:10 AM",
-              "channel_note": "WeChat Mini Program (60 RMB / ฿295)",
+              "channel_note": "WeChat Mini Program (60 RMB / ฿305)",
               "badge_text": "Booked",
               "badge_type": "success"
             },
@@ -152,7 +152,7 @@
               "id": "chk_mutianyu_package",
               "task": "ตั๋วกำแพงเมืองจีน Mutianyu Great Wall: ค่าเข้า + Shuttle bus + Chairlift ขาขึ้น + Toboggan Slide ขาลง",
               "time_note": "เข้าชม 2 ม.ค. 2027 @ 07:30 AM",
-              "channel_note": "ค่าเข้า 40 + Shuttle bus 15 + Chairlift/Toboggan 140 (195 RMB / ฿965)",
+              "channel_note": "ค่าเข้า 40 + Shuttle bus 15 + Chairlift/Toboggan 140 (195 RMB / ฿991)",
               "badge_text": "High Priority",
               "badge_type": "warning"
             },
@@ -160,7 +160,7 @@
               "id": "chk_mutianyu_798_car",
               "task": "เหมารถ 7 ที่นั่งออกนอกเมือง 1 วัน: Mutianyu Great Wall & 798 Art Zone",
               "time_note": "2 ม.ค. 2027 @ 05:30 AM - 05:00 PM",
-              "channel_note": "Private Car Charter (1,500 RMB หาร 4 = 375 RMB / ฿1,856 ต่อคน)",
+              "channel_note": "Private Car Charter (1,700 RMB หาร 4 = 425 RMB / ฿2,159 ต่อคน)",
               "badge_text": "High Priority",
               "badge_type": "warning"
             },
@@ -168,7 +168,7 @@
               "id": "chk_forbidden_city_tour",
               "task": "4h 30m Group Tour: พระราชวังต้องห้าม (Forbidden City) + จัตุรัสเทียนอันเหมิน",
               "time_note": "เข้าชม 3 ม.ค. 2027 @ 08:00 AM",
-              "channel_note": "camp จองแล้วผ่าน klook (231 RMB / ฿1,144)",
+              "channel_note": "camp จองแล้วผ่าน klook (225 RMB / ฿1,144)",
               "badge_text": "Booked",
               "badge_type": "success"
             },
@@ -176,7 +176,7 @@
               "id": "chk_temple_heaven_ticket",
               "task": "ตั๋วเข้าชมหอสักการะฟ้าเทียนถัน (Temple of Heaven)",
               "time_note": "เข้าชม 3 ม.ค. 2027 @ 02:50 PM",
-              "channel_note": "camp จองแล้วผ่าน klook (14 RMB / ฿68)",
+              "channel_note": "camp จองแล้วผ่าน klook (13 RMB / ฿68)",
               "badge_text": "Booked",
               "badge_type": "success"
             }

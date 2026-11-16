@@ -770,12 +770,12 @@
           </div>
           <div>
             <h4 class="rate-title">Exchange Rate Reference</h4>
-            <p class="rate-subtitle">Benchmark Currency Ratio: <strong>1 CNY ≈ 4.91 THB</strong> &nbsp;|&nbsp; <strong>1 THB ≈ 0.204 CNY</strong></p>
+            <p class="rate-subtitle">Benchmark Currency Ratio: <strong>1 CNY ≈ 5.08 THB</strong> &nbsp;|&nbsp; <strong>1 THB ≈ 0.197 CNY</strong></p>
           </div>
         </div>
         <div class="rate-pills-wrap">
-          <span class="rate-pill-flag">🇨🇳 1 CNY = ฿4.91 THB</span>
-          <span class="rate-pill-flag">🇹🇭 100 THB = ¥20.37 CNY</span>
+          <span class="rate-pill-flag">🇨🇳 1 CNY = ฿5.08 THB</span>
+          <span class="rate-pill-flag">🇹🇭 100 THB = ¥19.69 CNY</span>
         </div>
       </div>
 
