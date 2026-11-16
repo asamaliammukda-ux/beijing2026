@@ -136,7 +136,7 @@
               "id": "chk_lama_temple_ticket",
               "task": "ตั๋วเข้าชมวัดลามะยงเหอกง (Lama Temple)",
               "time_note": "เข้าชม 31 ธ.ค. 2026 @ 09:20 AM",
-              "channel_note": "WeChat Official Reservation (25 RMB / ฿127)",
+              "channel_note": "WeChat Official Reservation (26 RMB / ฿130)",
               "badge_text": "Booked",
               "badge_type": "success"
             },
@@ -144,7 +144,7 @@
               "id": "chk_summer_palace_ticket",
               "task": "ตั๋วเข้าชมพระราชวังฤดูร้อน (Summer Palace)",
               "time_note": "เข้าชม 1 ม.ค. 2027 @ 09:10 AM",
-              "channel_note": "WeChat Mini Program (60 RMB / ฿305)",
+              "channel_note": "WeChat Mini Program (77 RMB / ฿392)",
               "badge_text": "Booked",
               "badge_type": "success"
             },
@@ -152,7 +152,7 @@
               "id": "chk_mutianyu_package",
               "task": "ตั๋วกำแพงเมืองจีน Mutianyu Great Wall: ค่าเข้า + Shuttle bus + Chairlift ขาขึ้น + Toboggan Slide ขาลง",
               "time_note": "เข้าชม 2 ม.ค. 2027 @ 07:30 AM",
-              "channel_note": "ค่าเข้า 40 + Shuttle bus 15 + Chairlift/Toboggan 140 (195 RMB / ฿991)",
+              "channel_note": "ค่าเข้า + Shuttle bus ฿305 + Chairlift/Toboggan ฿711 (200 RMB / ฿1,016)",
               "badge_text": "High Priority",
               "badge_type": "warning"
             },
