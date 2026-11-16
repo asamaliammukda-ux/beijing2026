@@ -97,7 +97,7 @@
           "items": [
             {
               "id": "chk_flight_outbound",
-              "task": "เที่ยวบินขาไป BKK ✈ PEK (Air tickets - ฟ้าใสออกไปก่อน)",
+              "task": "เที่ยวบินขาไป TG614 BKK ✈ PEK (Air tickets - ฟ้าใสออกไปก่อน)",
               "time_note": "29 ธ.ค. 2026 @ 10:40 AM - 03:50 PM",
               "channel_note": "สายการบิน Air tickets (฿15,380)",
               "badge_text": "Confirmed",
@@ -113,7 +113,7 @@
             },
             {
               "id": "chk_flight_inbound",
-              "task": "เที่ยวบินขากลับ PEK ✈ BKK (Back to Thailand)",
+              "task": "เที่ยวบินขากลับ CA803 ✈ BKK (Back to Thailand)",
               "time_note": "4 ม.ค. 2027 @ 06:00 PM - 11:25 PM",
               "channel_note": "สนามบินนานาชาติปักกิ่ง (PEK)",
               "badge_text": "Confirmed",
@@ -128,7 +128,7 @@
               "id": "chk_universal_pass",
               "task": "บัตรเข้าสวนสนุก Universal Studios Beijing 1-Day Pass",
               "time_note": "เข้าชม 30 ธ.ค. 2026 @ 09:00 AM",
-              "channel_note": "จองตั๋วล่วงหน้า (500 RMB / ฿2,455)",
+              "channel_note": "camp จองแล้วผ่าน klook (352 RMB / ฿1,742)",
               "badge_text": "Booked",
               "badge_type": "success"
             },
@@ -150,9 +150,9 @@
             },
             {
               "id": "chk_mutianyu_package",
-              "task": "แพคเกจกำแพงเมืองจีน Mutianyu Great Wall (Postcard Ticket + Shuttle Bus + Round-Trip Cable Car)",
+              "task": "ตั๋วกำแพงเมืองจีน Mutianyu Great Wall: ค่าเข้า + Shuttle bus + Chairlift ขาขึ้น + Toboggan Slide ขาลง",
               "time_note": "เข้าชม 2 ม.ค. 2027 @ 07:30 AM",
-              "channel_note": "จองตั๋วล่วงหน้า (200 RMB / ฿990)",
+              "channel_note": "ค่าเข้า 40 + Shuttle bus 15 + Chairlift/Toboggan 140 (195 RMB / ฿965)",
               "badge_text": "High Priority",
               "badge_type": "warning"
             },
@@ -168,7 +168,7 @@
               "id": "chk_forbidden_city_tour",
               "task": "4h 30m Group Tour: พระราชวังต้องห้าม (Forbidden City) + จัตุรัสเทียนอันเหมิน",
               "time_note": "เข้าชม 3 ม.ค. 2027 @ 08:00 AM",
-              "channel_note": "Group Tour Booking (204 RMB / ฿1,000)",
+              "channel_note": "camp จองแล้วผ่าน klook (231 RMB / ฿1,144)",
               "badge_text": "Booked",
               "badge_type": "success"
             },
@@ -176,7 +176,7 @@
               "id": "chk_temple_heaven_ticket",
               "task": "ตั๋วเข้าชมหอสักการะฟ้าเทียนถัน (Temple of Heaven)",
               "time_note": "เข้าชม 3 ม.ค. 2027 @ 02:50 PM",
-              "channel_note": "WeChat Official Reservation (28 RMB / ฿137)",
+              "channel_note": "camp จองแล้วผ่าน klook (14 RMB / ฿68)",
               "badge_text": "Booked",
               "badge_type": "success"
             }
