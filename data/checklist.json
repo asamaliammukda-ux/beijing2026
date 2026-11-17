@@ -150,19 +150,11 @@
             },
             {
               "id": "chk_mutianyu_package",
-              "task": "ตั๋วกำแพงเมืองจีน Mutianyu Great Wall: ค่าเข้า + Shuttle bus + Cable Car ไป-กลับ",
-              "time_note": "เข้าชม 2 ม.ค. 2027 @ 08:00 AM",
-              "channel_note": "ค่าเข้า + Shuttle bus + Cable Car ไป-กลับ (190 RMB / ฿965)",
-              "badge_text": "High Priority",
-              "badge_type": "warning"
-            },
-            {
-              "id": "chk_mutianyu_798_car",
-              "task": "เหมารถ 7 ที่นั่งออกนอกเมือง 1 วัน: Mutianyu Great Wall & 798 Art Zone",
+              "task": "กำแพงเมืองจีน Mutianyu 1 วัน: รถส่วนตัว 7 ที่นั่ง + ค่าเข้า + Shuttle bus + Cable Car ไป-กลับ (ต่อด้วย 798 Art Zone)",
               "time_note": "2 ม.ค. 2027 @ 05:50 AM - 05:30 PM",
-              "channel_note": "Private Car Charter (1,700 RMB หาร 4 = 425 RMB / ฿2,159 ต่อคน)",
-              "badge_text": "High Priority",
-              "badge_type": "warning"
+              "channel_note": "camp จ่ายมัดจำไปแล้ว 1000 บาท (440 RMB / ฿2,235 ต่อคน)",
+              "badge_text": "Booked",
+              "badge_type": "success"
             },
             {
               "id": "chk_forbidden_city_tour",
