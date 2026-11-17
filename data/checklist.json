@@ -150,9 +150,9 @@
             },
             {
               "id": "chk_mutianyu_package",
-              "task": "ตั๋วกำแพงเมืองจีน Mutianyu Great Wall: ค่าเข้า + Shuttle bus + Chairlift ขาขึ้น + Toboggan Slide ขาลง",
+              "task": "ตั๋วกำแพงเมืองจีน Mutianyu Great Wall: ค่าเข้า + Shuttle bus + Cable Car ไป-กลับ",
               "time_note": "เข้าชม 2 ม.ค. 2027 @ 08:00 AM",
-              "channel_note": "ค่าเข้า + Shuttle bus ฿305 + Chairlift/Toboggan ฿711 (200 RMB / ฿1,016)",
+              "channel_note": "ค่าเข้า + Shuttle bus ฿305 + Cable Car ฿711 (200 RMB / ฿1,016)",
               "badge_text": "High Priority",
               "badge_type": "warning"
             },
