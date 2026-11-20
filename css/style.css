@@ -885,6 +885,42 @@ body {
   color: #475569;
 }
 
+/* Recommended-menu box inside restaurant timeline cards */
+.timeline-menu-box {
+  margin-top: 0.75rem;
+  padding: 0.65rem 0.85rem;
+  background: var(--accent-amber-glow);
+  border: 1px solid var(--border-glass-glow);
+  border-radius: var(--radius-sm);
+}
+
+.timeline-menu-label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--accent-gold);
+  margin-bottom: 0.2rem;
+}
+
+.timeline-menu-text {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+[data-theme="light"] .timeline-menu-box {
+  background: #FFF7ED;
+  border-color: #FED7AA;
+}
+
+[data-theme="light"] .timeline-menu-label {
+  color: #C2410C;
+}
+
+[data-theme="light"] .timeline-menu-text {
+  color: #475569;
+}
+
 /* Amap Link Button (Used in Restaurants) */
 .amap-btn {
   display: inline-flex;

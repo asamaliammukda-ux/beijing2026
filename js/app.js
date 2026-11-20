@@ -514,6 +514,12 @@
       grouped[item.Date].push(item);
     });
 
+    // Match itinerary stops to restaurants.csv by Amap link or image path
+    const restaurantByLink = new Map();
+    state.restaurants.forEach(r => {
+      [r.Amap, r.Image].forEach(key => { if (key && key.trim()) restaurantByLink.set(key.trim(), r); });
+    });
+
     let html = '';
 
     for (const [date, items] of Object.entries(grouped)) {
@@ -527,6 +533,7 @@
       `;
 
       items.forEach(item => {
+        const restaurant = restaurantByLink.get((item.Amap || '').trim()) || restaurantByLink.get((item.Image || '').trim());
         const hasImage = Boolean(item.Image && typeof item.Image === 'string' && item.Image.trim() !== '');
         const hasAmap = Boolean(item.Amap && typeof item.Amap === 'string' && item.Amap.trim() !== '');
         const hasTimeSpent = Boolean(item.Time_spent && typeof item.Time_spent === 'string' && item.Time_spent.trim() !== '' && item.Time_spent.trim() !== '-');
@@ -539,7 +546,10 @@
           ? item.Detail.trim()
           : '';
 
-        const hasDetail = Boolean(detailText !== '');
+        // Restaurant stops: pull "เมนูแนะนำ:" out of the detail into its own box, else use the restaurant's Menu
+        const [descText, inlineMenu] = detailText.split('เมนูแนะนำ:');
+        const menuText = (inlineMenu || (restaurant && restaurant.Menu) || '').trim();
+        const hasDetail = Boolean(descText.trim() !== '');
 
         const imageHTML = hasImage ? `
           <div class="timeline-thumb-wrapper">
@@ -574,7 +584,13 @@
                 ${amapHTML}
               </div>
               <h3 class="timeline-topic-title">${escapeHTML(topicText)}</h3>
-              ${hasDetail ? `<p class="timeline-detail-desc">${escapeHTML(detailText)}</p>` : ''}
+              ${hasDetail ? `<p class="timeline-detail-desc">${escapeHTML(descText.trim())}</p>` : ''}
+              ${menuText ? `
+              <div class="timeline-menu-box">
+                <span class="timeline-menu-label">เมนูแนะนำ</span>
+                <p class="timeline-menu-text">${escapeHTML(menuText)}</p>
+              </div>
+              ` : ''}
             </div>
           </div>
         `;
