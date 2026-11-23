@@ -10,6 +10,7 @@ const PRECACHE_URLS = [
   'data/restaurants.csv',
   'data/budget.csv',
   'data/checklist.json',
+  'data/universal-plan.csv',
   'images/hero-bg.jpg'
 ];
 

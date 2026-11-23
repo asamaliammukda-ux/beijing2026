@@ -921,6 +921,141 @@ body {
   color: #475569;
 }
 
+/* Show list inside the highlight box (e.g. Universal Studios shows) */
+.timeline-show-list {
+  margin: 0;
+  padding-left: 1.1rem;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+
+.timeline-show-list li + li {
+  margin-top: 0.25rem;
+}
+
+.timeline-show-list strong {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+[data-theme="light"] .timeline-show-list {
+  color: #475569;
+}
+
+[data-theme="light"] .timeline-show-list strong {
+  color: #0F172A;
+}
+
+/* In-park schedule table (Universal Studios card) */
+.park-plan {
+  margin-top: 0.75rem;
+  padding: 0.65rem 0.85rem;
+  background: var(--pill-bg);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-sm);
+}
+
+.park-plan-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.park-plan-table th {
+  text-align: left;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  padding: 0.35rem 0.5rem 0.35rem 0;
+  border-bottom: 1px solid var(--border-glass);
+}
+
+.park-plan-table td {
+  vertical-align: top;
+  padding: 0.5rem 0.5rem 0.5rem 0;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-glass);
+}
+
+.park-plan-table tr:last-child td {
+  border-bottom: none;
+}
+
+.park-plan-time {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--accent-gold);
+  white-space: nowrap;
+}
+
+.park-plan-zone {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.park-plan-activity {
+  display: block;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.park-plan-note {
+  font-size: 0.82rem;
+}
+
+[data-theme="light"] .park-plan {
+  background: #F8FAFC;
+  border-color: #E2E8F0;
+}
+
+[data-theme="light"] .park-plan-table th,
+[data-theme="light"] .park-plan-table td {
+  border-color: #E2E8F0;
+}
+
+[data-theme="light"] .park-plan-time {
+  color: #C2410C;
+}
+
+[data-theme="light"] .park-plan-activity {
+  color: #0F172A;
+}
+
+[data-theme="light"] .park-plan-table td {
+  color: #475569;
+}
+
+/* Phones: stack each row instead of squeezing three columns */
+@media (max-width: 640px) {
+  .park-plan-table thead {
+    display: none;
+  }
+
+  .park-plan-table tr {
+    display: block;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-glass);
+  }
+
+  .park-plan-table tr:last-child {
+    border-bottom: none;
+  }
+
+  .park-plan-table td {
+    display: block;
+    padding: 0.1rem 0;
+    border-bottom: none;
+  }
+
+  [data-theme="light"] .park-plan-table tr {
+    border-color: #E2E8F0;
+  }
+}
+
 /* Amap Link Button (Used in Restaurants) */
 .amap-btn {
   display: inline-flex;

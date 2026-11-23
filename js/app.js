@@ -11,6 +11,7 @@
   const state = {
     itinerary: [],
     restaurants: [],
+    parkPlan: [],
     budget: [],
     checklist: {},
     hero: {},
@@ -24,6 +25,9 @@
   };
 
   // Curated itinerary highlights shown first in the Itinerary filter bar (matched by Image path)
+  // Itinerary card (matched by Image path) that gets the in-park schedule table from data/universal-plan.csv
+  const PARK_PLAN_IMAGE = 'images/itinerary/universal-studios.jpg';
+
   const HIGHLIGHT_IMAGES = new Set([
     'images/itinerary/universal-studios.jpg',
     'images/itinerary/lama-temple.jpg',
@@ -164,12 +168,13 @@
     try {
       showLoadingState();
 
-      const [itineraryData, restaurantsData, budgetData, checklistRes, heroRes] = await Promise.all([
+      const [itineraryData, restaurantsData, budgetData, checklistRes, heroRes, parkPlanData] = await Promise.all([
         fetchAndParseCSV('data/itinerary.csv'),
         fetchAndParseCSV('data/restaurants.csv'),
         fetchAndParseCSV('data/budget.csv'),
         fetch('data/checklist.json'),
-        fetch('data/hero.json')
+        fetch('data/hero.json'),
+        fetchAndParseCSV('data/universal-plan.csv').catch(() => [])
       ]);
 
       if (!checklistRes.ok) {
@@ -181,6 +186,7 @@
 
       state.itinerary = itineraryData;
       state.restaurants = restaurantsData;
+      state.parkPlan = parkPlanData;
       state.budget = budgetData;
       state.checklist = await checklistRes.json();
       state.hero = await heroRes.json();
@@ -547,8 +553,11 @@
           : '';
 
         // Restaurant stops: pull "เมนูแนะนำ:" out of the detail into its own box, else use the restaurant's Menu
-        const [descText, inlineMenu] = detailText.split('เมนูแนะนำ:');
+        const [detailBody, showsPart] = detailText.split('การแสดงที่น่าสนใจ:');
+        const [descText, inlineMenu] = detailBody.split('เมนูแนะนำ:');
         const menuText = (inlineMenu || (restaurant && restaurant.Menu) || '').trim();
+        // "การแสดงที่น่าสนใจ:" items are separated by ";" (Name - description)
+        const shows = (showsPart || '').split(';').map(x => x.trim()).filter(Boolean);
         const hasDetail = Boolean(descText.trim() !== '');
 
         const imageHTML = hasImage ? `
@@ -556,6 +565,20 @@
             <img src="${escapeHTML(item.Image.trim())}" alt="${escapeHTML(topicText || 'Itinerary activity')}" class="timeline-thumb" loading="lazy" onerror="this.onerror=null; if(this.closest('.timeline-card')) { this.closest('.timeline-card').classList.remove('has-image'); this.closest('.timeline-card').classList.add('no-image'); } if(this.parentNode) this.parentNode.remove();">
           </div>
         ` : '';
+
+        // Extras inside the card text column: in-park plan, then show list at the bottom
+        const showsHTML = shows.length ? `
+          <div class="timeline-menu-box">
+            <span class="timeline-menu-label">การแสดงที่น่าสนใจ</span>
+            <ul class="timeline-show-list">
+              ${shows.map(x => {
+                const [name, ...desc] = x.split(' - ');
+                return `<li><strong>${escapeHTML(name)}</strong>${desc.length ? ` — ${escapeHTML(desc.join(' - '))}` : ''}</li>`;
+              }).join('')}
+            </ul>
+          </div>
+        ` : '';
+        const parkPlanHTML = item.Image === PARK_PLAN_IMAGE && state.parkPlan.length ? renderParkPlan(state.parkPlan) : '';
 
         const amapHTML = hasAmap ? `
           <a href="${escapeHTML(item.Amap.trim())}" target="_blank" rel="noopener noreferrer" class="amap-pill-btn" title="Open in Amap (高德地图)">
@@ -591,6 +614,8 @@
                 <p class="timeline-menu-text">${escapeHTML(menuText)}</p>
               </div>
               ` : ''}
+              ${parkPlanHTML}
+              ${showsHTML}
             </div>
           </div>
         `;
@@ -603,6 +628,29 @@
     }
 
     elements.itineraryContainer.innerHTML = html;
+  }
+
+  // In-park hour-by-hour schedule shown inside the Universal Studios card
+  function renderParkPlan(rows) {
+    const body = rows.map(r => `
+      <tr>
+        <td class="park-plan-time">${escapeHTML(r.Time || '')}</td>
+        <td>
+          <span class="park-plan-zone">${escapeHTML(r.Zone || '')}</span>
+          <span class="park-plan-activity">${escapeHTML(r.Activity || '')}</span>
+        </td>
+        <td class="park-plan-note">${escapeHTML(r.Note || '')}</td>
+      </tr>
+    `).join('');
+    return `
+      <div class="park-plan">
+        <span class="timeline-menu-label">แพลนเที่ยวในสวน</span>
+        <table class="park-plan-table">
+          <thead><tr><th scope="col">เวลา</th><th scope="col">โซน / เครื่องเล่น</th><th scope="col">Note</th></tr></thead>
+          <tbody>${body}</tbody>
+        </table>
+      </div>
+    `;
   }
 
   /* ==========================================================================
